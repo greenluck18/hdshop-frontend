@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "user",
+    "password": "pasword",
+    "database": "honeydukes_db",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "user",
+    "password": "pasword",
+    "database": "honeydukes_db",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "user",
+    "password": "pasword",
+    "database": "honeydukes_db",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
