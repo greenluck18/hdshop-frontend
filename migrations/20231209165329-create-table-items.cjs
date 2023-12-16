@@ -1,5 +1,3 @@
-'use strict';
-//Export
 /**
    * Migarte up.
    * @param {object} queryInterface Query interface.
@@ -25,26 +23,36 @@ module.exports = {
         type: Sequelize.STRING(1000),
         allowNull: false,
       },
-      tradeId: {
+      trade_id: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
+        allowNull: true,
+      },
+      created_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+        allowNull: false,
+      },
+      updated_at: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('NOW'),
+        allowNull: false,
       }
     });
   
     // Add indexes.
     await queryInterface.addIndex('items', ['id']);
-    await queryInterface.addIndex('items', ['tradeId']);
+    await queryInterface.addIndex('items', ['trade_id']);
   },
   /**
   * Migarte down.
   * @param {object} queryInterface Query interface.
   * @param {object} Sequelize Sequelize class.
   */
-  async down(queryInterface) {
+  async down (queryInterface) {
     
     // Remove indexes.
     await queryInterface.removeIndex('items', ['id']);
-    await queryInterface.removeIndex('items', ['tradeId']);
+    await queryInterface.removeIndex('items', ['trade_id']);
 
     // Drop table.
     await queryInterface.dropTable('items');

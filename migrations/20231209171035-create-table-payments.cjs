@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,    
         references: { model: 'payment_methods', key: 'id' }    
       },
-      userId: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: 'users', key: 'id' }    
@@ -37,7 +37,7 @@ module.exports = {
     // Add indexes.
     await queryInterface.addIndex('payments', ['id']);
     await queryInterface.addIndex('payments', ['payment_method_id']);
-    await queryInterface.addIndex('payments', ['userId']);
+    await queryInterface.addIndex('payments', ['user_id']);
     await queryInterface.addIndex('payments', ['amount']);
     await queryInterface.addIndex('payments', ['receipt_id']);
   },
@@ -51,7 +51,7 @@ module.exports = {
     // Remove indexes.
     await queryInterface.removeIndex('payments', ['id']);
     await queryInterface.removeIndex('payments', ['payment_method_id']);
-    await queryInterface.removeIndex('payments', ['userId']);
+    await queryInterface.removeIndex('payments', ['user_id']);
     await queryInterface.removeIndex('payments', ['amount']);
     await queryInterface.removeIndex('payments', ['receipt_id']);
 

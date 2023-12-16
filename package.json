@@ -8,10 +8,11 @@
     "start:dev": "nodemon index.js",
     "migration-generate": "./node_modules/.bin/sequelize-cli migration:generate --name new-migration",
     "migration-up": "./node_modules/.bin/sequelize db:migrate",
+    "migration-down": "./node_modules/.bin/sequelize db:migrate:undo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

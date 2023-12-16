@@ -1,3 +1,4 @@
+// Desc: Health check controller
 import os from 'os';
 /**
  * HealthCheckController
