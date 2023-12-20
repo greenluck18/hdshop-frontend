@@ -1,6 +1,9 @@
 
+import { readFile } from 'fs/promises';
 import { Sequelize } from "sequelize";
-import Config from './config/config.json' assert {type: 'json'};
+//import Config from './config/config.json' assert {type: 'json'};
+
+const Config = JSON.parse(await readFile('./config/config.json', 'utf8'));
 
 const {
     username,
