@@ -11,7 +11,7 @@ dotenv.config();
  */
 // create application/json parser
 
-class RegisterController {
+class AuthController {
   /**
     * ping - pong
     * @param {Request} req
@@ -57,7 +57,6 @@ class RegisterController {
       res.json(err);
     }
   }
-
   async login(req, res) {
     try {
       const {
@@ -96,6 +95,22 @@ class RegisterController {
       res.json(err);
     }
   }
+  async authenticateToken(req, res, next) {
+    
+    const token = req.header('Authorization');
+    console.log(token);
+    if (!token) {
+      return res.status(401).json({ message: 'Unauthorized - Missing Token. Login first' });
+    }
+
+    jwt.verify(token, this.privateKey, (err, user) => {
+      if (err) {
+        return res.status(403).json({ message: 'Forbidden - Invalid Token' });
+      }
+      req.user = user;
+      next();
+    });
+  }
 }
 
-export { RegisterController };
+export { AuthController };

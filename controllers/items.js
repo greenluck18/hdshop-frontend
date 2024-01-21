@@ -1,5 +1,6 @@
 // create and get the Item 
 import { Items } from '../models/items.js';
+import { UserItems } from '../models/users_items.js';
 /**
  * Items
  */
@@ -98,6 +99,22 @@ class ItemsController {
     res.status(201).json(updatedItem);
     }
     catch (err) {
+      res.status(500);
+      res.json(err);
+    }
+  }
+
+  async userItems(req, res) {
+    console.log(req.user);
+    try {
+      const items = await UserItems.findAll({
+        where: {
+          user_id: req.user.id
+        }
+      });
+      res.status(201);
+      res.json(items);
+    } catch (err) {
       res.status(500);
       res.json(err);
     }
