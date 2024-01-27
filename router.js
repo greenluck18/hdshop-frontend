@@ -24,7 +24,6 @@ class Router {
     this.app.get('/system_info', this.healthCheckController.systemInfo.bind(this.healthCheckController));
     
     this.app.get('/items',
-      this.authController.authenticateToken.bind(this.authController),
       this.itemsController.getItems.bind(this.itemsController)
     );
 
@@ -32,17 +31,34 @@ class Router {
       this.authController.authenticateToken.bind(this.authController),
       this.itemsController.userItems.bind(this.itemsController)
     );
-    this.app.get('/items/:id', this.itemsController.findById.bind(this.itemsController));
-    this.app.post('/create_item', this.itemsController.createItem.bind(this.itemsController));
-    this.app.get('/items/name/:name', this.itemsController.findItemByName.bind(this.itemsController));
-    this.app.delete('/items/delete/:id', this.itemsController.deleteItem.bind(this.itemsController));  
-    this.app.put('/items/update/:id', this.itemsController.updateItem.bind(this.itemsController));    
+    this.app.get('/items/:id', 
+      this.authController.authenticateToken.bind(this.authController),
+      this.itemsController.findById.bind(this.itemsController)
+    );
+    this.app.post('/create_item', 
+      this.authController.authenticateToken.bind(this.authController),
+      this.itemsController.createItem.bind(this.itemsController)
+    );
+    this.app.get('/items/name/:name',
+     this.itemsController.findItemByName.bind(this.itemsController)
+    );
+    this.app.delete('/items/delete/:id',
+      this.authController.authenticateToken.bind(this.authController),
+      this.itemsController.deleteItem.bind(this.itemsController)
+     );  
+    this.app.put('/items/update/:id', 
+      this.itemsController.updateItem.bind(this.itemsController)
+    );    
     
-    this.app.post('/register', this.authController.createUser.bind(this.authController));
-    this.app.post('/login', this.authController.login.bind(this.authController));
+    this.app.post('/register', 
+      this.authController.createUser.bind(this.authController)
+    );
+    this.app.post('/login', 
+      this.authController.login.bind(this.authController)
+    );
     
-    this.app.listen(3000, () => {
-      console.log('Server is running on port 3000');
+    this.app.listen(3001, () => {
+      console.log('Server is running on port 3001');
     });
   }
 }

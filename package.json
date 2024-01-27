@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "nodemon index.js", 
+    "start-frontend": "cd frontend && cd my-login-app && npm run start", 
     "start:dev": "nodemon index.js",
     "migration-generate": "./node_modules/.bin/sequelize-cli migration:generate --name new-migration",
     "migration-up": "./node_modules/.bin/sequelize db:migrate",
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
     "@babel/plugin-syntax-import-assertions": "^7.23.3",
+    "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "eslint-config-google": "^0.14.0",
     "jest": "^29.7.0",

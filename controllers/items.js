@@ -108,12 +108,28 @@ class ItemsController {
     console.log(req.user);
     try {
       const items = await UserItems.findAll({
+        // attributes: ['user_id', 'item_id'],
+        // include: [
+        //   {
+        //     model: Items,
+        //     attributes: ['description'],
+        //     required: true,
+        //     where: {
+        //       description: { [Sequelize.Op.ne]: null }
+        //     }
+        //   }
+        // ],
         where: {
           user_id: req.user.id
         }
       });
+      const items_desc = await Items.findAll({
+        where: {
+          id: items.map(item => item.item_id)
+        }
+      });
       res.status(201);
-      res.json(items);
+      res.json(items_desc);
     } catch (err) {
       res.status(500);
       res.json(err);
