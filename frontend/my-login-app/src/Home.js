@@ -15,7 +15,7 @@ const Home = (props) => {
             <div>Welcome!</div>
         </div>
         <div>
-            This is the home page.
+            This is the home page. Welcome!
         </div>
         <div className={"buttonContainer"}>
             <input
