@@ -1,5 +1,6 @@
 // Description: This file contains the router class which is responsible for routing the requests to the appropriate controller.
 import express from 'express';
+import cors from 'cors'; 
 import { HealthCheckController } from './controllers/health_check.js';
 import { ItemsController } from './controllers/items.js';
 import { AuthController } from './controllers/auth.js';
@@ -12,6 +13,7 @@ class Router {
    * @param {string} path
    */
   constructor() {
+   
     this.app = express();
     this.healthCheckController = new HealthCheckController();
     this.itemsController = new ItemsController();
@@ -19,6 +21,7 @@ class Router {
   }
 
   init() {
+    this.app.use(cors());
     this.app.use(express.json());
     this.app.get('/ping', this.healthCheckController.ping.bind(this.healthCheckController));
     this.app.get('/system_info', this.healthCheckController.systemInfo.bind(this.healthCheckController));
