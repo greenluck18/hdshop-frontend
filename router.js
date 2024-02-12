@@ -52,14 +52,13 @@ class Router {
     this.app.put('/items/update/:id', 
       this.itemsController.updateItem.bind(this.itemsController)
     );    
-    
     this.app.post('/register', 
       this.authController.createUser.bind(this.authController)
     );
     this.app.post('/login', 
       this.authController.login.bind(this.authController)
     );
-    
+
     this.app.listen(3001, () => {
       console.log('Server is running on port 3001');
     });
