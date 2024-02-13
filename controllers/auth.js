@@ -82,7 +82,7 @@ class AuthController {
             }, this.privateKey);
 
           console.log(accessToken);
-          res.status(200).json({ token: accessToken });
+          res.status(200).json({ token: accessToken, userId: user.dataValues.id});
 
         } else {
           res.status(404).json({ error: 'Error unauthorized' });
@@ -96,9 +96,10 @@ class AuthController {
     }
   }
   async authenticateToken(req, res, next) {
-    
+  
     const token = req.header('Authorization');
-    console.log(token);
+    console.log('TOKEN', req.header('Authorization'));
+    console.log(this.privateKey)
     if (!token) {
       return res.status(401).json({ message: 'Unauthorized - Missing Token. Login first' });
     }

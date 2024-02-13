@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-const Login = (props) => {
+const Login = () => {
   const [login, setlogin] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-   const [loginError, setLoginError] = useState("")
+  const [loginError, setLoginError] = useState("")
   const [passwordError, setPasswordError] = useState("")
 
   const navigate = useNavigate();
@@ -18,16 +18,15 @@ const Login = (props) => {
 
     if ("" === login) {
       setLoginError("Please enter your login")
-        return
+      return
     }
 
     if ("" === password) {
-        setPasswordError("Please enter a password")
-        return
+      setPasswordError("Please enter a password")
+      return
     }
-    return  handleLogin();   
-
-}
+    return handleLogin();
+  }
 
   const handleLogin = async () => {
     try {
@@ -35,23 +34,26 @@ const Login = (props) => {
         login,
         password
       });
-    
-      // localStorage.setItem("user", JSON.stringify({login, token: token}))
-      props.setLoggedIn(true)
+      const { token } = response.data;
+      const { userId } = response.data;
+
+      localStorage.setItem("authToken", token);
+      localStorage.setItem("login", login);
+      localStorage.setItem("userId", userId);
       navigate('/')
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        setErrorMessage('Invalid username or password'); // Set error message for 404 status
+        setErrorMessage('Invalid username or password');
       } else {
         console.error('Error logging in:', error);
-        setErrorMessage('An error occurred while logging in'); // Set generic error message
+        setErrorMessage('An error occurred while logging in');
       }
     }
   };
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     onButtonClick()
-   
+
   };
   function myFunction() {
     var x = document.getElementById("password");
@@ -65,65 +67,45 @@ const Login = (props) => {
   return (
 
     <div className={"mainContainer"}>
-        <div className={"titleContainer"}>
-            <div>Login</div>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={login}
-                placeholder="Enter your login here"
-                onChange={ev => setlogin(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{loginError}</label>
-        </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                value={password}
-                placeholder="Enter your password here"
-                type="password"
-                id="password"
-                onChange={ev => setPassword(ev.target.value)}
-                className={"inputBox"} />
-            <label className="errorLabel">{passwordError}</label>
-            
-        </div>
-        <div>
+      <div className={"titleContainer"}>
+        <div>Login</div>
+      </div>
+      <br />
+      <div className={"inputContainer"}>
+        <input
+          value={login}
+          placeholder="Enter your login here"
+          onChange={ev => setlogin(ev.target.value)}
+          className={"inputBox"} />
+        <label className="errorLabel">{loginError}</label>
+      </div>
+      <br />
+      <div className={"inputContainer"}>
+        <input
+          value={password}
+          placeholder="Enter your password here"
+          type="password"
+          id="password"
+          onChange={ev => setPassword(ev.target.value)}
+          className={"inputBox"} />
+        <label className="errorLabel">{passwordError}</label>
+
+      </div>
+      <div>
         <input
           type="checkbox" onClick={myFunction} />
         <label>Show password</label>
       </div>
-        <br />
-        <div className={"inputContainer"}>
-            <input
-                className={"inputButton"}
-                type="button"
-                onClick={handleSubmit}
-                value={"Log in"} />
-        </div>
-        {errorMessage && <p>{errorMessage}</p>} {/* Display error message if available */}
+      <br />
+      <div className={"inputContainer"}>
+        <input
+          className={"inputButton"}
+          type="button"
+          onClick={handleSubmit}
+          value={"Log in"} />
+      </div>
+      {errorMessage && <p>{errorMessage}</p>} {/* Display error message if available */}
     </div>
-
-
-        
-
-
-    // <div>
-    //   <h2>Login</h2>
-    //   <form>
-        
-    //     <div>
-    //       <label>Password:</label>
-    //       <input
-    //         type="password"
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </div>
-    //     <button type="button" onClick={handleLogin}>Login</button>
-    //   </form>
-    // </div>
   );
 };
 

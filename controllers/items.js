@@ -129,6 +129,7 @@ class ItemsController {
         }
       });
       res.status(201);
+      console.log(items_desc);
       res.json(items_desc);
     } catch (err) {
       res.status(500);
