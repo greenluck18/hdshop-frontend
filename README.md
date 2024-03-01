@@ -33,6 +33,7 @@ To use Honeyduke Shop, follow these steps:
 
 - Improve design
 - Use Redux
+
 ...
 
 ## Contributing
