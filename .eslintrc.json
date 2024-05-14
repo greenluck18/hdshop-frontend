@@ -12,5 +12,6 @@
         "process": "readonly"
     },
     "rules": {
-    }
+    },
+    "plugins": ["html"]
 }

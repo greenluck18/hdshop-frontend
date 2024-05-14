@@ -1,100 +1,90 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./RegistrationForm.css";
+import "./RegistrationForm.css"; // Import CSS for styling
 
-const Login = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [loginError, setLoginError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    login: "",
+    password: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+  });
+
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async () => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      const response = await axios.post("http://localhost:3001/login", {
-        login,
-        password,
+      const response = await axios.post("http://localhost:3001/register", {
+        login: formData.login,
+        password: formData.password,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        email: formData.email,
       });
 
-      const { token, userId } = response.data;
-      localStorage.setItem("authToken", token);
-      localStorage.setItem("login", login);
-      localStorage.setItem("userId", userId);
-
-      navigate("/");
+      console.log("User registered successfully:", response.data);
+      // Reset form fields or redirect to another page upon successful registration
+      navigate('/');
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        setErrorMessage("Invalid username or password");
-      } else {
-        console.error("Error logging in:", error);
-        setErrorMessage("An error occurred while logging in");
-      }
+      console.error("Registration failed:", error);
+      // Handle error (e.g., display error message to user)
     }
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Validate login and password
-    if (login.trim() === "") {
-      setLoginError("Please enter your login");
-      return;
-    }
-
-    if (password.trim() === "") {
-      setPasswordError("Please enter a password");
-      return;
-    }
-
-    // Attempt to log in
-    handleLogin();
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
   };
 
   return (
     <div className="registration-container">
-      <h2>Login</h2>
-      <form className="registration-form" onSubmit={handleSubmit}>
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit} className="registration-form">
         <input
-          value={login}
-          placeholder="Enter your login here"
-          onChange={(ev) => setLogin(ev.target.value)}
-          className="input-box"
+          type="text"
+          name="login"
+          placeholder="Login"
+          value={formData.login}
+          onChange={handleChange}
         />
-        <label className="error-label">{loginError}</label>
-
-        <div className="password-input-container">
-          <input
-            value={password}
-            placeholder="Enter your password here"
-            type={showPassword ? "text" : "password"}
-            onChange={(ev) => setPassword(ev.target.value)}
-            className="input-box"
-          />
-          <img
-            src={
-              showPassword ? "/path/to/open-eye.svg" : "/path/to/closed-eye.svg"
-            }
-            alt="Toggle password visibility"
-            className="visibility-icon"
-            onClick={togglePasswordVisibility}
-          />
-        </div>
-        <label className="error-label">{passwordError}</label>
-
-        <button type="submit" className="login-button">
-          Log In
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="first_name"
+          placeholder="First Name"
+          value={formData.first_name}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="last_name"
+          placeholder="Last Name"
+          value={formData.last_name}
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <button type="submit" className="register-button">
+          Register
         </button>
       </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };
 
-export default Login;
+export default RegistrationForm;
