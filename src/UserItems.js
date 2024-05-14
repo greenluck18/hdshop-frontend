@@ -1,0 +1,52 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './UserItems.css'; // Import your CSS file for styling
+
+const UserItems = () => {
+  const [errorMessage, setErrorMessage] = useState('');
+  const [cards, setCards] = useState([]);
+
+  const storedToken = localStorage.getItem("authToken") || '';
+
+  useEffect(() => {
+    findUserItems();
+  }, []);
+
+  const findUserItems = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/my_items', {
+        headers: { Authorization: storedToken }
+      });
+      setCards(response.data);
+    } catch (error) {
+      console.error('Error fetching user items:', error);
+      setErrorMessage('An error occurred while fetching items');
+    }
+  };
+
+  return (
+    <div className="user-items-container">
+      <ul className="card-list">
+        {cards.map(card => (
+          <li key={card.id} class="card-item">
+            <img
+              src={`cards/${card.picture_id}.jpg`}
+              alt={card.name}
+              width="250"
+              height="250"
+            />
+            <div className="card-details">
+              <p>{card.name}</p>
+              <p>{card.description}</p>
+              <p>${card.price}</p>
+              <button className="buy-button">Buy</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+    </div>
+  );
+};
+
+export default UserItems;
