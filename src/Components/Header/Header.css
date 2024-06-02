@@ -1,0 +1,53 @@
+.header {
+  position: fixed;
+  top:0;
+  left:0;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background: #16222A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color: #fff;
+  width: 100%;
+  z-index: 1000; /* Забезпечує, що Header буде поверх інших елементів */
+}
+
+
+/* .header {
+  background: radial-gradient(circle at 74.2% 50.9%, rgb(14, 72, 222) 5.2%, rgb(3, 22, 65) 75.3%);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  color: #fff;
+} */
+.nav {
+  height: 60px;
+  border:1px solid #ccc;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  font-size: 18px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #708c9f;
+}

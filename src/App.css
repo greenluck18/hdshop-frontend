@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+body {
+  font-family: "Yusei Magic", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 .mainContainer {
   flex-direction: column;
@@ -7,6 +21,7 @@
   justify-content: center;
   height: 100vh;
 }
+
 
 .titleContainer {
   display: flex;
@@ -58,8 +73,8 @@
   height: 48px;
   width: 400px;
   font-size: large;
-  border-radius: 8px;
-  border: 1px solid grey;
+  /* border-radius: 8px;
+  border: 1px solid grey; */
   padding-left: 8px;
 }
 
@@ -69,7 +84,7 @@ header {
   padding: 20px;
   text-align: center;
 }
-footer {
+/* footer {
   background-color: #333;
   color: #fff;
   padding: 10px;
@@ -77,7 +92,7 @@ footer {
   bottom: 0;
   width: 100%;
   text-align: center;
-}
+} */
 .container {
   max-width: 800px;
   margin: 20px auto;

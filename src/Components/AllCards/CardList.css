@@ -1,0 +1,70 @@
+.user-items-container {
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .image-with-border {
+    border: 1px solid #e7eaf6;
+    border-radius: 5px;
+  }
+  
+  .card-list {
+    margin-top:30px;
+    
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+
+  .card-item {
+    position: relative;
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #233142;
+    border: 1px solid #e7eaf6;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* Make card items flex containers with column direction */
+  }
+  
+  .card-details {
+    text-align: center;
+    flex: 1; /* Ensure card details take up remaining vertical space */
+  }
+  .card-item img {
+    
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+ 
+  .buy-button {
+    margin-top: 10px; /* Adjust top margin as needed */
+    align-self: center; /* Center the button horizontally */
+    background-color: #38598b;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buy-button:hover {
+    background-color: #a2a8d3;
+  }

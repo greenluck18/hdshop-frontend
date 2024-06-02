@@ -28,7 +28,7 @@ const UserItems = () => {
     <div className="user-items-container">
       <ul className="card-list">
         {cards.map(card => (
-          <li key={card.id} class="card-item">
+          <li key={card.id} className="card-item">
             <img
               src={`cards/${card.picture_id}.jpg`}
               alt={card.name}
@@ -36,7 +36,6 @@ const UserItems = () => {
               height="250"
             />
             <div className="card-details">
-              <p>{card.name}</p>
               <p>{card.description}</p>
               <p>${card.price}</p>
               <button className="buy-button">Buy</button>
