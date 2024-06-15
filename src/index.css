@@ -1,11 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.slick-slide > div {
-  margin:0 10px;
-}
 
 html,
 body {
@@ -17,8 +10,6 @@ body {
 
 * {
   box-sizing: border-box;
-
-  
 }
 
 main {
