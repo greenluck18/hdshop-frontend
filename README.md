@@ -28,7 +28,7 @@ The HDShop Frontend is built using [React](https://reactjs.org/) and [Redux](htt
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/hdshop-frontend.git
+    git clone git@github.com:greenluck18/hdshop-frontend.git
     ```
 
 2. Install the dependencies:
@@ -43,7 +43,7 @@ The HDShop Frontend is built using [React](https://reactjs.org/) and [Redux](htt
     - Create a `.env` file in the root directory
     - Add the necessary environment variables (e.g., API endpoint, authentication credentials)
 
-## Usage
+## Development usage
 
 1. Start the development server:
 
@@ -53,15 +53,16 @@ The HDShop Frontend is built using [React](https://reactjs.org/) and [Redux](htt
 
 2. Open your browser and navigate to `http://localhost:3000` to access the HDShop frontend.
 
-## Contributing
+## Production usage
 
-Contributions are welcome! If you'd like to contribute to the project, please follow these steps:
+1. Build the production version:
 
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Submit a pull request
+    ```bash
+    npm run build
+    ```
 
-## License
+2. Copy build files to Nginx directory '/var/www/html':
 
-This project is licensed under the [MIT License](LICENSE).
+    ```bash
+    ./nginx-deploy.sh
+    ```
