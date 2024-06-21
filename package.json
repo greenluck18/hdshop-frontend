@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.7",
+    "brew": "^0.0.8",
     "eslint-plugin-html": "^8.1.1",
     "liqpay": "^0.0.1",
     "liqpay-sdk-nodejs": "github:liqpay/sdk-nodejs",
