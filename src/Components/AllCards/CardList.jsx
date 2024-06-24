@@ -12,7 +12,7 @@ const CardList = () => {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/items");
+      const response = await axios.get("https://lit-garden-80835-f6f1bd11ce2a.herokuapp.com/items");
       setCards(response.data.rows); // Assuming 'rows' contains the array of cards in the response
       
     } catch (error) {
