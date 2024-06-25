@@ -10,6 +10,9 @@ const CreateCard = () => {
   const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  
+  const urlParams = new URLSearchParams(window.location.search);
+  const storedToken = urlParams.get('authToken') || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +23,9 @@ const CreateCard = () => {
         picture_id: pictureId,
         description,
       };
-      await axios.post(API_URL + "/create_item", newCard);
+      await axios.post(API_URL + "/create_item", newCard, {
+        headers: { Authorization: storedToken }
+      });
       setSuccessMessage("Card created successfully");
       setName("");
       setPrice("");

@@ -3,11 +3,13 @@ import axios from 'axios';
 import './UserItems.css'; // Import your CSS file for styling
 import { API_URL } from '../../constants';
 
+
 const UserItems = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [cards, setCards] = useState([]);
 
-  const storedToken = localStorage.getItem("authToken") || '';
+  const urlParams = new URLSearchParams(window.location.search);
+  const storedToken = urlParams.get('authToken') || '';
 
   useEffect(() => {
     findUserItems();
