@@ -18,15 +18,17 @@ const CreateCard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert(storedToken);
     try {
       const newCard = {
         name,
         price: parseFloat(price),
         picture_id: pictureId,
-        description,
-        headers: { Authorization: storedToken }
+        description
       };
-      await axios.post(API_URL + "/create_item", newCard);
+      await axios.post(API_URL + "/create_item", newCard, {
+        headers: { Authorization: storedToken }
+      });
       setSuccessMessage("Card created successfully");
       setName("");
       setPrice("");
