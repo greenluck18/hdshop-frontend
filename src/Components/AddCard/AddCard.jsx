@@ -11,14 +11,10 @@ const CreateCard = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const storedToken = urlParams.get('authToken') || '';
-
-  console.log(storedToken);
+  const storedToken = localStorage.get('authToken') || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(storedToken);
     try {
       const newCard = {
         name,

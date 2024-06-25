@@ -52,6 +52,7 @@ const LoginRegister = () => {
   
         const { token, userId } = response.data;
         localStorage.setItem('authToken', token);
+        console.log('authToken', token);
         localStorage.setItem('login', login);
         localStorage.setItem('userId', userId);
   
