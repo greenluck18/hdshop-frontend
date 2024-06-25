@@ -4,6 +4,7 @@ import Home from "./Components/Home/Home";
 import UserItems from "./Components/UserItems/UserItems";
 import CardList from "./Components/AllCards/CardList"; // Import the CardList component
 import LoginRegister from "./Components/LoginRegister/LoginRegister";
+import AddCard from "./Components/AddCard/AddCard";
 import Header from "./Components/Header/Header"; // Import the Header component
 import Footer from "./Components/Footer/Footer"; // Import the Footer component
 import "./App.css";
@@ -16,14 +17,11 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginRegister />} />
-            {/* <Route path="/registration" element={<RegistrationForm />} /> */}
-            {/* <Route path="/registration" element={<LoginRegister />} /> */}
             <Route path="/myItems" element={<UserItems />} />
+            <Route path="/addCard" element={<AddCard />} />
             <Route path="/allCards" element={<CardList />} />
-            {/* Include the Header component */}
-            {/* New route for CardList component */}
           </Routes>
-        <Footer /> {/* Include the Footer component */}
+        <Footer />
       </BrowserRouter>
      
     </div>

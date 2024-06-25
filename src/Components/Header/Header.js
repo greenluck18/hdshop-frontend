@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./Header.css"; // Import CSS for styling
 
 const Header = () => {
-    const storedToken = localStorage.getItem("authToken") || '';
+    const urlParams = new URLSearchParams(window.location.search);
+
+    const storedToken = urlParams.get('authToken') || '';
 
     return (
       <header className="header">
@@ -24,6 +26,11 @@ const Header = () => {
                 All Cards
               </Link>
             </li>
+            <li className="nav-item">
+                <Link to="/addCard" className="nav-link">
+                  Add Card
+                </Link>
+              </li>
             {storedToken && ( // Conditional rendering based on whether the token exists
               <li className="nav-item">
                 <Link to="/myItems" className="nav-link">
@@ -31,6 +38,9 @@ const Header = () => {
                 </Link>
               </li>
             )}
+           
+
+            
           </ul>
         </nav>
       </header>
