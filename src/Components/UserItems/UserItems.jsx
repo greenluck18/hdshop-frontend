@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './UserItems.css'; // Import your CSS file for styling
+import { API_URL } from '../../constants';
 
 const UserItems = () => {
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,7 +15,7 @@ const UserItems = () => {
 
   const findUserItems = async () => {
     try {
-      const response = await axios.get('http://localhost:3001/my_items', {
+      const response = await axios.get(API_URL + '/my_items', {
         headers: { Authorization: storedToken }
       });
       setCards(response.data);

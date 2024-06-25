@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./CardList.css"; // Import your CSS file for styling
-
+import { API_URL } from '../../constants';
+ 
 const CardList = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [cards, setCards] = useState([]); // Initialize cards state as an empty array
@@ -12,7 +13,7 @@ const CardList = () => {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("https://lit-garden-80835-f6f1bd11ce2a.herokuapp.com/items");
+      const response = await axios.get(API_URL + "/items");
       setCards(response.data.rows); // Assuming 'rows' contains the array of cards in the response
       
     } catch (error) {

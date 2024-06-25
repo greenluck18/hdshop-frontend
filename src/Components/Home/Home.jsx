@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import axios from "axios";
 import "./Home.css"; // Import your CSS file for styling
+import { API_URL } from '../../constants';
 
 const Home = () => {
   const settings = {
@@ -18,7 +19,7 @@ const Home = () => {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/items");
+      const response = await axios.get(API_URL + "/items");
       console.log(response.data); // Debugging line to check the response data
       setCards(response.data.rows); // Assuming 'rows' contains the array of cards in the response
     } catch (error) {

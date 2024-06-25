@@ -1,7 +1,7 @@
 .wrapper {
     position: relative;
     width: 420px;
-    height: 450px;
+    height: 600px;
     /* background: seagreen; */
     border-radius: 10px;
     display: flex;
@@ -125,4 +125,12 @@ form .register-link {
 
 .register-link p a:hover {
     text-decoration: underline;
+}
+
+
+form .login-link {
+    font-size: 14.5px;
+    color: white;
+    text-align: center;
+    margin: 20px 0 15px;
 }
