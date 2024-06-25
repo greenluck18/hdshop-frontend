@@ -8,8 +8,7 @@ const UserItems = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [cards, setCards] = useState([]);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const storedToken = urlParams.get('authToken') || '';
+  const storedToken = localStorage.getItem('authToken') || '';
 
   useEffect(() => {
     findUserItems();

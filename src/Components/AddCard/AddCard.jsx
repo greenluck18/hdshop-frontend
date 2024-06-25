@@ -11,7 +11,7 @@ const CreateCard = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
-  const storedToken = localStorage.get('authToken') || '';
+  const storedToken = localStorage.getItem('authToken') || '';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
