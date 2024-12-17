@@ -5,7 +5,6 @@ import UserItems from "./Components/UserItems/UserItems";
 import CardList from "./Components/AllCards/CardList"; // Import the CardList component
 import LoginRegister from "./Components/LoginRegister/LoginRegister";
 import AddCard from "./Components/AddCard/AddCard";
-import MyAccount from "./Components/MyAccount/MyAccount"; 
 import Header from "./Components/Header/Header"; // Import the Header component
 import Footer from "./Components/Footer/Footer"; 
 import "./App.css";
@@ -21,7 +20,6 @@ function App() {
             <Route path="/myItems" element={<UserItems />} />
             <Route path="/addCard" element={<AddCard />} />
             <Route path="/allCards" element={<CardList />} />
-            <Route path="/myAccount" element={<MyAccount />} />
           </Routes>
         <Footer />
       </BrowserRouter>

@@ -59,7 +59,7 @@ const LoginRegister = () => {
         localStorage.setItem('login', login);
         localStorage.setItem('userId', userId);
   
-        navigate('/myAccount');
+        navigate('/AllCards');
       } catch (error) {
         console.log('error in LoginRegister', error);
         if (error.response && error.response.status === 404) {
