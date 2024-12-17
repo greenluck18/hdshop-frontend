@@ -8,6 +8,7 @@ import AddCard from "./Components/AddCard/AddCard";
 import Header from "./Components/Header/Header"; // Import the Header component
 import Footer from "./Components/Footer/Footer"; 
 import "./App.css";
+import DeleteCard from "./Components/DeleteCard/DeleteCard";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/myItems" element={<UserItems />} />
             <Route path="/addCard" element={<AddCard />} />
             <Route path="/allCards" element={<CardList />} />
+            <Route path="/deleteCard" element={<DeleteCard />} />
           </Routes>
         <Footer />
       </BrowserRouter>

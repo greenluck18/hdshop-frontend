@@ -1,0 +1,26 @@
+.wrapper .form-box.deleteCard {
+    position: absolute;
+    top: 0;
+    transform: translateX(100%);
+}
+
+/* If you want to use a similar transition effect as addCard,
+   you can adjust this logic. Otherwise, just style similarly. */
+
+form h1 {
+    font-size: 36px;
+    color: white;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: limegreen;
+    text-align: center;
+    margin-top: 10px;
+}
