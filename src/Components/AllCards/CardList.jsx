@@ -18,7 +18,7 @@ const CardList = () => {
       
     } catch (error) {
       console.error("Error fetching cards:", error);
-      setErrorMessage("An error occurred while fetching cards");
+      setErrorMessage("We don't have any cards available at the moment");
     }
   };
 

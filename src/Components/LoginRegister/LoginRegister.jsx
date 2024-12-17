@@ -45,6 +45,7 @@ const LoginRegister = () => {
     };
     const handleRegister = async () => {
       try {
+        
         const response = await axios.post(API_URL + '/register', {
           login,
           password
@@ -52,12 +53,15 @@ const LoginRegister = () => {
   
         const { token, userId } = response.data;
         localStorage.setItem('authToken', token);
+
         console.log('authToken', token);
+        
         localStorage.setItem('login', login);
         localStorage.setItem('userId', userId);
   
-        navigate('/myItems');
+        navigate('/myAccount');
       } catch (error) {
+        console.log('error in LoginRegister', error);
         if (error.response && error.response.status === 404) {
           setErrorMessage('Invalid username or password');
         } else {

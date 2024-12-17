@@ -2,17 +2,39 @@
     position: relative;
     width: 420px;
     height: 600px;
-    /* background: seagreen; */
     border-radius: 10px;
     display: flex;
     color: white;
     overflow: hidden;
+    /* Fantastic background gradient */
+    background: linear-gradient(135deg, #131862 0%, #3d2fa2 50%, #732dd9 100%);
+    box-shadow: 0 0 50px rgba(0,0,0,0.4);
+}
+
+.wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 40%);
+    animation: rotateGlow 20s linear infinite;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
     transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
 }
 
 .wrapper .form-box.login {
@@ -35,8 +57,10 @@
 
 form h1 {
     font-size: 36px;
-    color: white;
+    color: #fff;
     text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.6);
 }
 
 form .input-box {
@@ -48,89 +72,121 @@ form .input-box {
 
 .input-box input {
     width: 100%;
-    color: white;
+    color: #ffffff;
     height: 100%;
-    background: transparent;
+    background: rgba(255,255,255,0.1);
     border: none;
     outline: none;
-    border: 2px solid rgb(15 3 3 / 10%);
+    border: 2px solid rgba(255,255,255,0.2);
     border-radius: 40px;
     font-size: 16px;
-    padding: 20px 45px 20px 20px;
+    padding: 0 45px 0 20px;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 .input-box input::placeholder {
-    color: rgb(251, 251, 251);
+    color: rgba(255,255,255,0.7);
+}
+
+.input-box input:focus {
+    background: rgba(255,255,255,0.2);
+    border-color: #fff;
 }
 
 .input-box .icon {
     position: absolute;
     right: 20px;
-    color: white;
-    top: 130%;
-    translate: 0 -50px;
-    font-size: 16px;
-}   
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+    pointer-events: none;
+}
 
 form .remember-forgot {
     display: flex;
-    color: white;
     justify-content: space-between;
     font-size: 14.5px;
     margin: -15px 0px 15px;
+    color: #fff;
 }
 
 .remember-forgot label input {
-    accent-color:  #fff;
-    color: white;
+    accent-color: #fff;
     margin-right: 4px;
 }
 
 .remember-forgot a {
-    color: white;
+    color: #fff;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .remember-forgot a:hover {
     text-decoration: underline;
+    color: #ececec;
 }
 
 form button {
     width: 100%;
     height: 45px;
     background: #fff;
-    color: white;
+    color: #333;
     border: none;
     outline: none;
     border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
     font-weight: 700;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-form .register-link {
-    font-size: 14.5px;
-    color: white;
-    text-align: center;
-    margin: 20px 0 15px;
+form button:hover {
+    background: #f7f7f7;
+    color: #000;
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
 
-.register-link p a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.register-link p a:hover {
-    text-decoration: underline;
-}
-
-
+form .register-link,
 form .login-link {
     font-size: 14.5px;
-    color: white;
+    color: #fff;
     text-align: center;
     margin: 20px 0 15px;
+}
+
+.register-link p a,
+.login-link p a,
+.register-link p button,
+.login-link p button {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.register-link p a:hover,
+.login-link p a:hover,
+.register-link p button:hover,
+.login-link p button:hover {
+    text-decoration: underline;
+    color: #e2e2e2;
+}
+
+.error-label {
+    color: #ffadad;
+    font-size: 12px;
+    margin: -10px 0 10px;
+    display: block;
+}
+
+.error-message {
+    color: #ffadad;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
 }
