@@ -1,14 +1,53 @@
+/* Reuse the same fantasy font */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
 
-footer {
-    position: fixed;
-    bottom: 0;
-    left:0;
-    color: white;
-    padding: 10px 20px;
-    background: #16222A;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c1b5a 0%, #5d3fd3 50%, #2c1b5a 100%);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.7);
+  padding: 10px 0;
+  font-family: 'Uncial Antiqua', cursive;
+  text-align: center;
+  color: #fff;
+  /* Subtle starry background */
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+}
 
-    width: 100%;
-    z-index: 1000; /* Забезпечує, що Header буде поверх інших елементів */
-  }
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-title {
+  font-size: 24px;
+  margin: 5px 0;
+  text-shadow: 0 0 5px rgba(255,255,255,0.7);
+}
+
+.footer-text {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.footer-contact {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.footer-copy {
+  font-size: 12px;
+  margin: 5px 0;
+  opacity: 0.8;
+}
+
+.icon {
+  font-size: 1.2em;
+  margin-right: 5px;
+}

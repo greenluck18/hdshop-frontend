@@ -1,29 +1,26 @@
+/* Import the fantasy font */
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap');
+
 .header {
   position: fixed;
-  top:0;
-  left:0;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  background: #16222A;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  color: #fff;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1000; /* Забезпечує, що Header буде поверх інших елементів */
-}
-
-
-/* .header {
-  background: radial-gradient(circle at 74.2% 50.9%, rgb(14, 72, 222) 5.2%, rgb(3, 22, 65) 75.3%);
-  padding: 10px 20px;
-  margin-bottom: 20px;
+  z-index: 1000; 
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #2c1b5a 0%, #5d3fd3 50%, #2c1b5a 100%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  font-family: 'Uncial Antiqua', cursive;
   color: #fff;
-} */
-.nav {
-  height: 60px;
-  border:1px solid #ccc;
 }
+
+/* Optional: add a subtle starry background */
+.header {
+  background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 5px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -33,21 +30,32 @@
 .nav-list {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {
-  font-size: 18px;
+  position: relative;
 }
 
 .nav-link {
   text-decoration: none;
   color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  padding: 8px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .nav-link:hover {
-  background-color: #708c9f;
+  background-color: rgba(255,255,255,0.2);
+  box-shadow: 0 0 10px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3);
+  transform: translateY(-1px);
+}
+
+.icon {
+  font-size: 1.2em;
 }
